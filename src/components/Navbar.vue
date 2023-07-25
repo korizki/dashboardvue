@@ -11,26 +11,35 @@
     </div>
     <div class="nav">
       <div class="logo">
-        <router-link to="/"><img src="../assets/images/ppa.png" alt="logo" width="42" height="42" ></router-link>
+        <router-link to="/"><img src="../assets/images/ppa.png" alt="logo" width="42" height="42"></router-link>
       </div>
       <ul class="listnav">
-          <div class="containerA">
-            <router-link to="/operation-monitoring-unit"><h4 :class="{activeTab: active == 1}" @click="activeTab(1)">Unit Monitoring</h4></router-link>
-          </div>
-          <div class="containerA">
-            <router-link to="/setting-fleet"><h4 :class="{activeTab: active == 2}" @click="activeTab(2)">Setting Fleet</h4></router-link>
-          </div>
-          <div class="containerA">
-            <router-link to="/parking-location"><h4 :class="{activeTab: active == 3}" @click="activeTab(3)">Parking Location</h4></router-link>
-            
-          </div>
-          <div class="containerA">
-            <router-link to="/standby-operator"><h4 :class="{activeTab: active == 4}" @click="activeTab(4)">Standby Operator</h4></router-link>
-            
-          </div>
-          <div class="containerA">
-            <router-link to="/breakdown-monitoring"><h4>Breakdown Monitoring</h4></router-link>
-          </div>
+        <div class="containerA">
+          <router-link to="/operation-monitoring-unit">
+            <h4 :class="{ activeTab: active == 1 }" @click="activeTab(1)">Unit Monitoring</h4>
+          </router-link>
+        </div>
+        <!-- <div class="containerA">
+          <router-link to="/setting-fleet">
+            <h4 :class="{ activeTab: active == 2 }" @click="activeTab(2)">Setting Fleet</h4>
+          </router-link>
+        </div>
+        <div class="containerA">
+          <router-link to="/parking-location">
+            <h4 :class="{ activeTab: active == 3 }" @click="activeTab(3)">Parking Location</h4>
+          </router-link>
+
+        </div>
+        <div class="containerA">
+          <router-link to="/standby-operator">
+            <h4 :class="{ activeTab: active == 4 }" @click="activeTab(4)">Standby Operator</h4>
+          </router-link>
+        </div>
+        <div class="containerA">
+          <router-link to="/breakdown-monitoring">
+            <h4>Breakdown Monitoring</h4>
+          </router-link>
+        </div> -->
       </ul>
       <div class="cirbox" style="visibility: hidden">
         <span class="circle"><span>R</span></span><i class="fi fi-rr-caret-right"></i>
@@ -44,23 +53,23 @@
 
 <script>
 export default {
-  data(){
-    return{
+  data() {
+    return {
       date: '',
       active: '',
     }
   },
   methods: {
-    getDate(){ 
-      setInterval( () => {
-        this.date = new Date().toLocaleString("en-US", {dateStyle: "full", timeStyle: "long"})
+    getDate() {
+      setInterval(() => {
+        this.date = new Date().toLocaleString("en-US", { dateStyle: "full", timeStyle: "long" })
       }, 1000)
     },
-    activeTab(page){
+    activeTab(page) {
       localStorage.setItem("page", page)
     }
   },
-  mounted(){
+  mounted() {
     this.getDate()
     this.active = localStorage.getItem("page")
   }
@@ -70,26 +79,29 @@ export default {
 <style >
 @import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
 
-*{
+* {
   margin: 0;
   text-decoration: none;
   list-style: none;
   color: inherit;
 }
-nav{
-    width: 100%;
-    top: -30px;
-    padding: 0;
-    position: sticky;
+
+nav {
+  width: 100%;
+  top: -30px;
+  padding: 0;
+  position: sticky;
 }
-button{
+
+button {
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   border-radius: 0.25rem;
   cursor: pointer;
 }
-.nav{
+
+.nav {
   background: white;
   z-index: 20;
   user-select: none;
@@ -100,17 +112,20 @@ button{
   gap: 16px;
   box-shadow: 0 2px 2px 0 rgba(221, 221, 221, 0.5);
 }
-.fi-rr-caret-right{
+
+.fi-rr-caret-right {
   display: inline-block;
   transform: translateY(5px) rotate(90deg);
 }
-.navinfo{
+
+.navinfo {
   background: var(--abu3);
   display: flex;
   justify-content: space-between;
   padding: 4px 32px;
 }
-.circle{
+
+.circle {
   width: 35px;
   height: 35px;
   display: inline-block;
@@ -118,42 +133,51 @@ button{
   border-radius: 20px;
   color: white;
 }
-.circle>span{
+
+.circle>span {
   user-select: none;
   display: inline-block;
   transform: translateY(6px);
   font-weight: 700;
 }
-.listnav{
+
+.listnav {
   display: flex;
   flex: 1;
   justify-content: center;
   gap: 32px;
 }
-.listnav>div>a>h4{
+
+.listnav>div>a>h4 {
   color: var(--hitam2);
   transition: all 0.3s;
 }
-.listnav>div>a>h4:hover{
+
+.listnav>div>a>h4:hover {
   color: var(--biru1);
   cursor: pointer;
 }
-.activeTab{
+
+.activeTab {
   color: var(--biru1) !important;
 }
-.containerA{
+
+.containerA {
   padding: 12px 0;
 }
-.containerA:hover .navbox{
+
+.containerA:hover .navbox {
   opacity: 1;
   max-height: 500px;
   overflow: unset;
   transform: translate(-20px, 0)
-} 
-.containerA:hover >h4{
+}
+
+.containerA:hover>h4 {
   color: var(--biru1);
 }
-.navbox{
+
+.navbox {
   position: absolute;
   background: white;
   border-radius: 8px;
@@ -166,7 +190,8 @@ button{
   max-height: 0;
   overflow: hidden;
 }
-.navbox:after{
+
+.navbox:after {
   content: "";
   position: absolute;
   top: -4px;
@@ -176,19 +201,23 @@ button{
   background: white;
   z-index: 0;
 }
-.navsection{
+
+.navsection {
   margin: 16px 0;
 }
-.navsection>h4{
+
+.navsection>h4 {
   border-bottom: 1px solid #ddd;
   padding-bottom: 4px;
   margin-bottom: 4px;
 }
-.navsection2{
+
+.navsection2 {
   display: flex;
   gap: 40px;
 }
-.navsection2>div>a{
+
+.navsection2>div>a {
   display: block;
   margin: 4px 0;
   line-height: 1.3rem;
@@ -196,22 +225,25 @@ button{
   font-weight: 400;
   color: var(--abu1) !important;
 }
-.navsection2>div>a:hover{
+
+.navsection2>div>a:hover {
   color: var(--biru1) !important;
 }
-.logoutbtn{
+
+.logoutbtn {
   position: absolute;
   padding: 10px 6px;
   margin-top: 0px;
-  width:max-content;
-  transform: translate(-60px , -10px);
+  width: max-content;
+  transform: translate(-60px, -10px);
   border-radius: 0.25rem;
   transition: all 0.3s;
   opacity: 0;
   overflow: hidden;
   max-height: 0px;
 }
-.logoutbtn>a{
+
+.logoutbtn>a {
   padding: 0.5rem 0.75rem;
   line-height: 1.25rem;
   font-size: 0.875rem;
@@ -222,32 +254,39 @@ button{
   background: var(--abu3);
   border: 1px solid #ddd;
 }
-.logoutbtn>a:active{
+
+.logoutbtn>a:active {
   background: var(--merah1);
   color: white;
 }
-.fi-rr-sign-out-alt{
+
+.fi-rr-sign-out-alt {
   display: inline-block;
   margin-right: 4px;
   transform: translateY(1px);
 }
-.cirbox:hover .logoutbtn{
+
+.cirbox:hover .logoutbtn {
   opacity: 1;
   transform: translate(-60px, 0);
   max-height: 100px;
 }
 
-@media screen and (max-width: 800px){
-  .listnav{
+@media screen and (max-width: 800px) {
+  .listnav {
     padding-left: 0;
   }
-  .nav{
+
+  .nav {
     padding: 12px 0;
   }
-  .cirbox, .logo{
+
+  .cirbox,
+  .logo {
     display: none;
   }
-  .navinfo>p:first-child{
+
+  .navinfo>p:first-child {
     display: none;
   }
 }
